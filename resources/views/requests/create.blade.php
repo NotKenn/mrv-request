@@ -20,7 +20,11 @@
 
                             <div class="form-group">
                                 <label>Customer</label>
-                                <input type="text" class="form-control @error('customer') is-invalid @enderror" name="namaCust">
+                                <select type="text" class="form-control @error('user_id') is-invalid @enderror" name="namaCust">
+                                        @foreach($approvers as $s)
+                                            <option value="{{$s->id}}">{{$s->username}}</option>
+                                        @endforeach
+                                </select>
                             
                                 <!-- error message untuk title -->
                                 @error('customer')

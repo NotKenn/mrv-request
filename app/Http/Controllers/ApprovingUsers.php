@@ -10,6 +10,8 @@ use Illuminate\View\View;
 
 use Illuminate\Http\RedirectResponse;
 
+use Illuminate\Support\Facades\Hash;
+
 class ApprovingUsers extends Controller
 {
     public function index(): View
@@ -35,7 +37,7 @@ class ApprovingUsers extends Controller
         ]);
         UserList::create([
             'username'     => $as->username,
-            'password'     => $as->password,
+            'password'     => Hash::make($as->password),
             'authority'    => $as->authority
         ]);
         
@@ -63,7 +65,7 @@ class ApprovingUsers extends Controller
         //validate form
         $this->validate($as, [
             'username',
-            'password',
+            'password' ,
             'authority',
         ]);
 

@@ -49,8 +49,9 @@
                                   </div>
                               @endforelse
                             </tbody>
-                          </table>  
+                          </table>
                           {{ $users->links() }}
+                          <a href="/"><button class="btn btn-md btn-success mb-3" style="background-color:blue">Home</button></a>
                     </div>
                 </div>
             </div>

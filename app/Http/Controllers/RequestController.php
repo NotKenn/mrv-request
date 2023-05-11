@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\RequestsPO;
 
+use App\Models\UserList;
+
 use Illuminate\View\View;
 
 use Illuminate\Http\Request;
@@ -29,7 +31,10 @@ class RequestController extends Controller
 
     public function create(): View
     {
-        return view('requests.create');
+        $approvers = UserList::all();
+        $orders = RequestsPO::all();
+
+        return view('requests.create', compact('approvers', 'orders'));
     }
 
     public function store(Request $req): RedirectResponse

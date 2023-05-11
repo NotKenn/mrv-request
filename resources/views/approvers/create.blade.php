@@ -49,7 +49,7 @@
                                 <label>Order</label>
                                 <select type="text" class="form-control @error('req_id') is-invalid @enderror" name="req_id">
                                 @foreach($orders as $o)
-                                            <option value="{{$s->id}}">{{$o->item}}</option>
+                                            <option value="{{$o->id}}">{{$o->item}}</option>
                                         @endforeach
                                 </select>
                             
