@@ -17,6 +17,7 @@ Route::resource('/homepage', \App\Http\Controllers\HomeController::class);
 Route::resource('/users', \App\Http\Controllers\ApprovingUsers::class);
 Route::resource('/approvers', \App\Http\Controllers\Approvers::class);
 Route::resource('/', \App\Http\Controllers\DashboardController::class);
+Route::resource('/items', \App\Http\Controllers\ItemController::class);
 /*
 |--------------------------------------------------------------------------
 | Web Routes
