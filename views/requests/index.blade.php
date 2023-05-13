@@ -17,7 +17,8 @@
                     <h3 class="text-center my-4">MRV Requests</h3>
                     <h5 class="text-center">MRV Requests Program</h5>         
                     <hr>
-                </div>
+                </div>                
+                @if(auth()->user()->username === "root")
                 <div class="card border-0 shadow-sm rounded">
                     <div class="card-body">
                         <a href="{{ route('requests.create') }}" class="btn btn-md btn-success mb-3">Add Orders</a>
@@ -63,6 +64,14 @@
                           <a href="/"><button class="btn btn-md btn-success mb-3" style="background-color:blue">Home</button></a>
                     </div>
                 </div>
+                @else
+                <div class ="card border-0 shadow-sm rounded">
+                    <div class="card-body">
+                        <p style="font-size:larger"><center>You don't Have The Authority To Access This Page</center></p>
+                        <a href="/"><center><button class="btn btn-md btn-success mb-3" style="background-color:blue">Back to Home</center></button></a>
+                    </div>
+                </div>
+                @endif
             </div>
         </div>
     </div>

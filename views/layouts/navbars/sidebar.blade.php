@@ -1,3 +1,4 @@
+@auth()
 <div class="sidebar">
     <div class="sidebar-wrapper">
         <div class="logo">
@@ -12,6 +13,7 @@
                 </a>
             </li>
             <li>
+                @if(auth()->user()->authority === "root")
                 <a data-toggle="collapse" href="#laravel-examples" aria-expanded="true">
                     <i class="fab fa-laravel" ></i>
                     <span class="nav-link-text" >{{ __('Functions') }}</span>
@@ -45,7 +47,41 @@
                         </li>
                     </ul>
                 </div>
+                @elseif(auth()->user()->authority === "User")
+                <a data-toggle="collapse" href="#laravel-examples" aria-expanded="true">
+                    <i class="fab fa-laravel" ></i>
+                    <span class="nav-link-text" >{{ __('Functions') }}</span>
+                    <b class="caret mt-1"></b>
+                </a>
+                <div class="collapse show" id="laravel-examples">
+                    <ul class="nav pl-4">
+                        <li>
+                            <a href="/requests/create">
+                                <i class="tim-icons icon-bullet-list-67"></i>
+                                <p>{{ __('Make New Order') }}</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                @else
+                <a data-toggle="collapse" href="#laravel-examples" aria-expanded="true">
+                    <i class="fab fa-laravel" ></i>
+                    <span class="nav-link-text" >{{ __('Functions') }}</span>
+                    <b class="caret mt-1"></b>
+                </a>
+                <div class="collapse show" id="laravel-examples">
+                    <ul class="nav pl-4">
+                        <li>
+                            <a href="/approvers">
+                                <i class="tim-icons icon-bullet-list-67"></i>
+                                <p>{{ __('Assign Approvers') }}</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                @endif
             </li>
         </ul>
     </div>
 </div>
+@endauth

@@ -18,6 +18,8 @@
                     <h5 class="text-center">MRV Requests Program</h5>         
                     <hr>
                 </div>
+                @auth()
+                @if(auth()->user()->username === "root" || auth()->user()->authority === "AdminPO")
                 <div class="card border-0 shadow-sm rounded">
                     <div class="card-body">
                         <a href="{{ route('items.create') }}" class="btn btn-md btn-success mb-3">Add Items</a>
@@ -52,6 +54,15 @@
                           <a href="/"><button class="btn btn-md btn-success mb-3" style="background-color:blue">Home</button></a>
                     </div>
                 </div>
+                @else
+                <div class ="card border-0 shadow-sm rounded">
+                    <div class="card-body">
+                        <p style="font-size:larger"><center>You don't Have The Authority To Access This Page</center></p>
+                        <a href="/"><center><button class="btn btn-md btn-success mb-3" style="background-color:blue">Back to Home</center></button></a>
+                    </div>
+                </div>
+                @endif
+                @endauth
             </div>
         </div>
     </div>
