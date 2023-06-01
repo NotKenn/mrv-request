@@ -11,9 +11,8 @@ class ItemLists extends Model
     
     protected $fillable = [
         'itemName',
-        'Qty',
     ];  
-    
+
     public $timestamps = false;
     
 }

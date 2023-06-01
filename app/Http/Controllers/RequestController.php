@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ItemLists;
+
 use App\Models\RequestsPO;
 
 use App\Models\UserList;
@@ -24,17 +26,19 @@ class RequestController extends Controller
         //get requests list
         //paginate = batasin jumlah data yg di view
         $requests = RequestsPO::OrderBy('id', 'asc')->paginate(5);
+        $approvers = UserList::OrderBy('id', 'asc');
 
         //render view with posts
-        return view('requests.index', compact('requests'));
+        return view('requests.index', compact('requests', 'approvers'));
     }
 
     public function create(): View
     {
         $approvers = UserList::all();
         $orders = RequestsPO::all();
+        $items = ItemLists::all();
 
-        return view('requests.create', compact('approvers', 'orders'));
+        return view('requests.create', compact('approvers', 'orders', 'items'));
     }
 
     public function store(Request $req): RedirectResponse

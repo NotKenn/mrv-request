@@ -37,6 +37,7 @@
 
                             <button type="submit" class="btn btn-md btn-primary">Add</button>
                             <button type="reset" class="btn btn-md btn-warning">Reset</button>
+                            <a style="display:flex;justify-content:center;float:right;"href="/users" class="btn btn-md btn-primary">Back</a>
                         </form> 
                     </div>
                 </div>

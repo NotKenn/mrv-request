@@ -95,6 +95,7 @@
                             </div>
                             <button type="submit" class="btn btn-md btn-primary">Save</button>
                             <button type="reset" class="btn btn-md btn-warning">Reset</button>
+                            <a style="display:flex;justify-content:center;float:right;"href="/approvers"class="btn btn-md btn-primary">Back</a>
                         </form> 
                     </div>
                 </div>

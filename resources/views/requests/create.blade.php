@@ -21,9 +21,13 @@
                             <div class="form-group">
                                 <label>Customer</label>
                                 <select type="text" class="form-control @error('user_id') is-invalid @enderror" name="namaCust">
+                                        @if(auth()->user()->authority === "User")
+                                            <option value="{{auth()->user()->username}}">{{auth()->user()->username}}</option>
+                                        @else
                                         @foreach($approvers as $s)
-                                            <option value="{{$s->id}}">{{$s->username}}</option>
+                                            <option value="{{$s->username}}">{{$s->username}}</option>
                                         @endforeach
+                                        @endif
                                 </select>
                             
                                 <!-- error message untuk title -->
@@ -36,10 +40,14 @@
 
                             <div class="form-group">
                                 <label>Item</label>
-                                <input type="text" class="form-control @error('item') is-invalid @enderror" name="namaItem">
+                                <select type="text" class="form-control @error('itemName') is-invalid @enderror" name="namaItem">
+                                        @foreach($items as $a)
+                                            <option value="{{$a->itemName}}">{{$a->itemName}}</option>
+                                        @endforeach
+                                </select>
                             
                                 <!-- error message untuk title -->
-                                @error('item')
+                                @error('itemName')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}
                                     </div>
@@ -105,6 +113,7 @@
 
                             <button type="submit" class="btn btn-md btn-primary">Save</button>
                             <button type="reset" class="btn btn-md btn-warning">Reset</button>
+                            <a style="display:flex;justify-content:center;float:right;"href="/requests"class="btn btn-md btn-primary">Back</a>
 
                         </form> 
                     </div>

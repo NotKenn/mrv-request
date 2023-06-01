@@ -67,15 +67,6 @@
                                 <tr>
                                     <td>{{ $user->username }}</td>
                                     <td>{!! $user->authority !!}</td>
-                                    <td style="width:25%">
-                                        <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('users.index') }}">
-                                            <a href="{{ route('users.index', $user->id) }}" class="btn btn-sm btn-dark">Show</a>
-                                            <a href="{{ route('users.index', $user->id) }}" class="btn btn-sm btn-primary">Edit</a>
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                                        </form>
-                                    </td>
                                 </tr>
                               @empty
                                   <div class="alert alert-danger">
@@ -97,7 +88,6 @@
                                 <th scope="col">Order Id</th>
                                 <th scope="col">Approved</th>
                                 <th scope="col">Level</th>
-                                <th scope="col">Edit</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -109,15 +99,6 @@
                                     <td>{{ $approver->req_id }}</td>
                                     <td>{{ $approver->isApproved}}</td>
                                     <td>{{ $approver->level }}</td>
-                                    <td>
-                                        <form action="{{ route('approvers.index') }}">
-                                            <a href="{{ route('approvers.index') }}" class="btn btn-sm btn-dark">Show</a>
-                                            <a href="{{ route('approvers.index') }}" class="btn btn-sm btn-primary">Edit</a>
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                                        </form>
-                                    </td>
                                 </tr>
                               @empty
                                   <div class="alert alert-danger">
@@ -139,7 +120,6 @@
                                 <th scope="col">Status</th>
                                 <th scope="col">Created</th>
                                 <th scope="col">Updated at</th>
-                                <th scope="col">Edit</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -151,15 +131,6 @@
                                     <td>{{ $request->status }}</td>
                                     <td>{{ $request->created_at }}</td>
                                     <td>{{ $request->updated_at }}</td>
-                                    <td>
-                                        <form action="{{ route('requests.index') }}">
-                                            <a href="{{ route('requests.index') }}" class="btn btn-sm btn-dark">Show</a>
-                                            <a href="{{ route('requests.index') }}" class="btn btn-sm btn-primary">Edit</a>
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                                        </form>
-                                    </td>
                                 </tr>
                               @empty
                                   <div class="alert alert-danger">
@@ -169,6 +140,33 @@
                             </tbody>
                           </table>  
                           {{ $requests->links() }}
+                    </div>
+                    <div class="card-body"><h1>Items</h1>
+                        <a href="{{ route('items.create') }}" class="btn btn-md btn-success mb-3">Add Items</a>
+                        <table class="table table-bordered">
+                            <thead>
+                              <tr>
+                                <th scope="col">Item Name</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              @forelse ($items as $item)
+                                <tr>
+                                    <td>{{ $item->itemName }}</td>
+                                    <td style="width:30%;">
+                                            <a href="{{ route('items.index') }}" class="btn btn-sm btn-dark">Show</a>
+                                            <a href="{{ route('items.index') }}" class="btn btn-sm btn-primary">Edit</a>
+                                            @csrf
+                                    </td>
+                                </tr>
+                              @empty
+                                  <div class="alert alert-danger">
+                                      Not Available.
+                                  </div>
+                              @endforelse
+                            </tbody>
+                          </table>  
+                          {{ $items->links() }}
                           @elseif (auth()->user()->authority === "User")
                           <div class="dropdown show-dropdown">
                         <a href="#" data-toggle="dropdown">
@@ -194,6 +192,66 @@
                             Hi <strong>{{ auth()->user()->username }}</strong>!
                         </h1>
                         <a class="btn btn-md btn-success mb-3" href="{{ route('requests.create')}}">Make Orders</a>
+                    </div>
+                          @else
+                        <div class="dropdown show-dropdown">
+                        <a href="#" data-toggle="dropdown">
+                        <i class="fa fa-cog fa-2x"> </i>
+                        </a>
+                        <ul class="dropdown-menu">
+                        <li class="header-title"> Sidebar Background</li>
+                        <li class="adjustments-line">
+                            <a href="javascript:void(0)" class="switch-trigger background-color">
+                            <div class="badge-colors text-center">
+                                <span class="badge filter badge-primary active" data-color="primary"></span>
+                                <span class="badge filter badge-info" data-color="blue"></span>
+                                <span class="badge filter badge-success" data-color="green"></span>
+                            </div>
+                            <div class="clearfix"></div>
+                            </a>
+                        </li>
+                        </ul>
+                    </div>
+                </div>
+                    <div class="content">
+                        <h1 class="display-4">
+                            Hi <strong>{{ auth()->user()->username }}</strong>!
+                        </h1>
+                        <a class="btn btn-md btn-success mb-3" href="{{ route('approvers.create')}}">Assign Approvers</a>
+                        <div class="card border-0 shadow-sm rounded">
+                            <div class="card-body"><h1>Orders</h1>
+                            <a href="{{ route('requests.index') }}" class="btn btn-md btn-success mb-3">Add Orders</a>
+                        <table class="table table-bordered">
+                            <thead>
+                              <tr>
+                                <th scope="col">Customer</th>
+                                <th scope="col">Item</th>
+                                <th scope="col">Level</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Created</th>
+                                <th scope="col">Updated at</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              @forelse ($requests as $request)
+                                <tr>
+                                    <td>{{ $request->customer }}</td>
+                                    <td>{!! $request->item !!}</td>
+                                    <td>{{ $request->level }}</td>
+                                    <td>{{ $request->status }}</td>
+                                    <td>{{ $request->created_at }}</td>
+                                    <td>{{ $request->updated_at }}</td>
+                                </tr>
+                              @empty
+                                  <div class="alert alert-danger">
+                                      Not Available.
+                                  </div>
+                              @endforelse
+                            </tbody>
+                          </table>  
+                          {{ $requests->links() }}
+                        </div>  
+                    </div>
                     </div>
                         @endif
                         

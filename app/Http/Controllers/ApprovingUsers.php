@@ -92,5 +92,4 @@ class ApprovingUsers extends Controller
         //redirect to index
         return redirect()->route('users.index')->with(['success' => 'Data Berhasil Dihapus!']);
     }
-
 }

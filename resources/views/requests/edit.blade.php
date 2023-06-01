@@ -56,6 +56,7 @@
 
                         <button type="submit" class="btn btn-md btn-primary">Update</button>
                         <button type="reset" class="btn btn-md btn-warning">Reset</button>
+                            <a style="display:flex;justify-content:center;float:right;"href="/requests"class="btn btn-md btn-primary">Back</a>
 
                         </form> 
                     </div>

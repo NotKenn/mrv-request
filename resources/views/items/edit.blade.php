@@ -14,34 +14,24 @@
             <div class="col-md-12">
                 <div class="card border-0 shadow-sm rounded">
                     <div class="card-body"> 
-                        <form action="{{ route('users.update', $users->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('items.update', $items->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
-
                         <div class="form-group">
-                            <label>Username</label>
-                            <input type="text" class="form-control @error('customer') is-invalid @enderror" name="username" value="{{ old('username', $users->username) }}">
+                            <label>Item Name</label>
+                            <input type="text" class="form-control @error('itemName') is-invalid @enderror" name="namaItem" value="{{ old('itemName', $items->itemName) }}">
                         
                             <!-- error message untuk title -->
-                            @error('customer')
+                            @error('itemName')
                                 <div class="alert alert-danger mt-2">
                                     {{ $message }}
                                 </div>
                             @enderror
                         </div>
 
-                        <div class="form-group">
-                                <label>Authority</label>
-                                <select class="form-control @error('authority') is-invalid @enderror" name="authority">
-                                    <option value="User">User</option>
-                                    <option value="AdminPO">AdminPO</option>
-                                    <option value="root">root</option>
-                                </select>
-                            </div>
-                        
                         <button type="submit" class="btn btn-md btn-primary">Update</button>
                         <button type="reset" class="btn btn-md btn-warning">Reset</button>
-                            <a style="display:flex;justify-content:center;float:right;"href="/users"class="btn btn-md btn-primary">Back</a>
+                            <a style="display:flex;justify-content:center;float:right;"href="/items"class="btn btn-md btn-primary">Back</a>
 
                         </form> 
                     </div>
