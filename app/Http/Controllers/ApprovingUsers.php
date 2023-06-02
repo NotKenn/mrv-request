@@ -12,6 +12,8 @@ use Illuminate\Http\RedirectResponse;
 
 use Illuminate\Support\Facades\Hash;
 
+use PDF;
+
 class ApprovingUsers extends Controller
 {
     public function index(): View
@@ -91,5 +93,12 @@ class ApprovingUsers extends Controller
 
         //redirect to index
         return redirect()->route('users.index')->with(['success' => 'Data Berhasil Dihapus!']);
+    }
+    public function cetak_pdf()
+    {
+    	$users = UserList::all();
+ 
+    	$pdf = PDF::loadview('users.users_pdf',['users'=>$users]);
+    	return $pdf->stream();
     }
 }

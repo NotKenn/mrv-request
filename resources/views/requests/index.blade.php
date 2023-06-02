@@ -21,7 +21,7 @@
                 @if(auth()->user()->username === "root" || auth()->user()->authority === "AdminPO")
                 <div class="card border-0 shadow-sm rounded">
                     <div class="card-body">
-                        <a href="{{ route('requests.create') }}" class="btn btn-md btn-success mb-3">Add Orders</a>
+                        <a href="{{ route('requests.create') }}" class="btn btn-md btn-success mb-3">Add Orders</a> <a href="orders_pdf" class="btn btn-md btn-success mb-3">Save as PDF</a>
                         <table class="table table-bordered">
                             <thead>
                               <tr>
@@ -29,7 +29,7 @@
                                 <th scope="col">Item</th>
                                 <th scope="col">Level</th>
                                 <th scope="col">Status</th>
-                                <th scope="col">Created</th>
+                                <th scope="col">Created at</th>
                                 <th scope="col">Updated at</th>
                                 <th scope="col">Edit</th>   
                               </tr>
@@ -59,8 +59,7 @@
                                   </div>
                               @endforelse
                             </tbody>
-                          </table>  
-                          {{ $requests->links() }}
+                          </table> 
                           <a href="/"><button class="btn btn-md btn-success mb-3" style="background-color:blue">Home</button></a>
                     </div>
                 </div>

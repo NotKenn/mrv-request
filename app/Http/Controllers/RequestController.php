@@ -14,6 +14,10 @@ use Illuminate\Http\Request;
 
 use Illuminate\Http\RedirectResponse;
 
+use PDF;
+
+use App;
+
 class RequestController extends Controller
 {
     /**
@@ -26,7 +30,7 @@ class RequestController extends Controller
         //get requests list
         //paginate = batasin jumlah data yg di view
         $requests = RequestsPO::OrderBy('id', 'asc')->paginate(5);
-        $approvers = UserList::OrderBy('id', 'asc');
+        $approvers = UserList::OrderBy('id', 'asc')->paginate(5);
 
         //render view with posts
         return view('requests.index', compact('requests', 'approvers'));
@@ -123,5 +127,12 @@ class RequestController extends Controller
 
         //redirect to index
         return redirect()->route('requests.index')->with(['success' => 'Data Berhasil Dihapus!']);
+    }
+    public function cetak_pdf()
+    {
+        $requests = RequestsPO::all();
+
+        $pdf = PDF::loadView('requests.orders_pdf', ['requests'=>$requests]);
+        return $pdf->stream();
     }
 }

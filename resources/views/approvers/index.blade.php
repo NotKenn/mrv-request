@@ -21,7 +21,7 @@
                 @if(auth()->user()->username === "root" || auth()->user()->authority === "AdminPO")
                 <div class="card border-0 shadow-sm rounded">
                     <div class="card-body">
-                        <a href="{{ route('approvers.create') }}" class="btn btn-md btn-success mb-3">Assign User</a>
+                        <a href="{{ route('approvers.create') }}" class="btn btn-md btn-success mb-3">Assign User</a> <a href="approvers_pdf" class="btn btn-md btn-success mb-3">Save as PDF</a>
                         <table class="table table-bordered">
                             <thead>
                               <tr>
@@ -59,8 +59,7 @@
                                   </div>
                               @endforelse
                             </tbody>
-                          </table>  
-                          {{ $approvers->links() }}
+                          </table> 
                         <a href="/"><button class="btn btn-md btn-success mb-3" style="background-color:blue">Home</button></a>
                     </div>
                 </div>

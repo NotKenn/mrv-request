@@ -18,7 +18,6 @@
                     <h5 class="text-center">MRV Requests Program</h5>         
                     <hr>
                 </div>
-                @if(auth()->user()->username === "root")
                 <div class="card border-0 shadow-sm rounded">
                     <div class="card-body">
                         <a href="{{ route('users.create') }}" class="btn btn-md btn-success mb-3">Add User</a>
@@ -62,7 +61,6 @@
                         <a href="/"><center><button class="btn btn-md btn-success mb-3" style="background-color:blue">Back to Home</center></button></a>
                     </div>
                 </div>
-                @endif
             </div>
         </div>
     </div>

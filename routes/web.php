@@ -18,6 +18,10 @@ Route::resource('/users', \App\Http\Controllers\ApprovingUsers::class);
 Route::resource('/approvers', \App\Http\Controllers\Approvers::class);
 Route::resource('/', \App\Http\Controllers\DashboardController::class);
 Route::resource('/items', \App\Http\Controllers\ItemController::class);
+Route::get('orders_pdf', [\App\Http\Controllers\RequestController::class, 'cetak_pdf']);
+Route::get('users_pdf', [\App\Http\Controllers\ApprovingUsers::class, 'cetak_pdf']);
+Route::get('items_pdf', [\App\Http\Controllers\ItemController::class, 'cetak_pdf']);
+Route::get('approvers_pdf', [\App\Http\Controllers\Approvers::class, 'cetak_pdf']);
 /*
 |--------------------------------------------------------------------------
 | Web Routes

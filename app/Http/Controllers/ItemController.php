@@ -10,6 +10,8 @@ use Illuminate\View\View;
 
 use Illuminate\Http\RedirectResponse;
 
+use PDF;
+
 class ItemController extends Controller
 {
     public function index(): View
@@ -81,5 +83,12 @@ class ItemController extends Controller
 
         //redirect to index
         return redirect()->route('items.index')->with(['success' => 'Data Berhasil Dihapus!']);
+    }
+    public function cetak_pdf()
+    {
+    	$items = ItemLists::all();
+ 
+    	$pdf = PDF::loadview('items.items_pdf',['items'=>$items]);
+    	return $pdf->stream();
     }
 }

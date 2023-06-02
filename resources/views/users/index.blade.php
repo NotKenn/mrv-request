@@ -21,7 +21,7 @@
                 @if(auth()->user()->username === "root")
                 <div class="card border-0 shadow-sm rounded">
                     <div class="card-body">
-                        <a href="{{ route('users.create') }}" class="btn btn-md btn-success mb-3">Add User</a>
+                        <a href="{{ route('users.create') }}" class="btn btn-md btn-success mb-3">Add User</a> <a href = 'users_pdf' class = "btn btn-md btn-success mb-3">Save as PDF</a>
                         <table class="table table-bordered">
                             <thead>
                               <tr>
@@ -51,7 +51,7 @@
                               @endforelse
                             </tbody>
                           </table>
-                          {{ $users->links() }}
+                          {{ $users->links('pagination::bootstrap-4') }}
                           <a href="/"><button class="btn btn-md btn-success mb-3" style="background-color:blue">Home</button></a>
                     </div>
                 </div>

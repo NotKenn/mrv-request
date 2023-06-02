@@ -75,7 +75,7 @@
                               @endforelse
                             </tbody>
                           </table>
-                          {{ $users->links() }}
+                          {{ $users->links('pagination::bootstrap-4') }}
                     </div>
                     <div class="card-body"><h1>Approvers</h1>
                         <a href="{{ route('approvers.index') }}" class="btn btn-md btn-success mb-3">Assign User</a>
@@ -107,7 +107,6 @@
                               @endforelse
                             </tbody>
                           </table>  
-                          {{ $approvers->links() }}
                     </div>
                     <div class="card-body"><h1>Orders</h1>
                         <a href="{{ route('requests.index') }}" class="btn btn-md btn-success mb-3">Add Orders</a>
@@ -139,10 +138,9 @@
                               @endforelse
                             </tbody>
                           </table>  
-                          {{ $requests->links() }}
                     </div>
                     <div class="card-body"><h1>Items</h1>
-                        <a href="{{ route('items.create') }}" class="btn btn-md btn-success mb-3">Add Items</a>
+                        <a href="{{ route('items.index') }}" class="btn btn-md btn-success mb-3">Add Items</a>
                         <table class="table table-bordered">
                             <thead>
                               <tr>
@@ -166,7 +164,6 @@
                               @endforelse
                             </tbody>
                           </table>  
-                          {{ $items->links() }}
                           @elseif (auth()->user()->authority === "User")
                           <div class="dropdown show-dropdown">
                         <a href="#" data-toggle="dropdown">
@@ -248,8 +245,7 @@
                                   </div>
                               @endforelse
                             </tbody>
-                          </table>  
-                          {{ $requests->links() }}
+                        </table>  
                         </div>  
                     </div>
                     </div>

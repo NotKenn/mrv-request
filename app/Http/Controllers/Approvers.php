@@ -13,6 +13,8 @@ use App\Models\UserList;
 
 use App\Models\RequestsPO;
 
+use PDF;
+
 class Approvers extends Controller
 {
 
@@ -111,5 +113,12 @@ class Approvers extends Controller
 
         //redirect to index
         return redirect()->route('approvers.index')->with(['success' => 'Data Berhasil Dihapus!']);
+    }
+    public function cetak_pdf()
+    {
+    	$approvers = ApprovingAssigning::all();
+ 
+    	$pdf = PDF::loadview('approvers.approvers_pdf', ['approvers'=> $approvers]);
+    	return $pdf->stream();
     }
 }

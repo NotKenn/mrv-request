@@ -25,11 +25,11 @@
                         <table class="table table-bordered">
                             <thead>
                               <tr>
-                                <th scope="col">Customer</th>
+                                <th scope="col">Username</th>
                                 <th scope="col">Item</th>
                                 <th scope="col">Level</th>
                                 <th scope="col">Status</th>
-                                <th scope="col">Created</th>
+                                <th scope="col">Created at</th>
                                 <th scope="col">Updated at</th>
                                 <th scope="col">Edit</th>
                               </tr>

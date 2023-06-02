@@ -22,7 +22,7 @@
                 @if(auth()->user()->username === "root" || auth()->user()->authority === "AdminPO")
                 <div class="card border-0 shadow-sm rounded">
                     <div class="card-body">
-                        <a href="{{ route('items.create') }}" class="btn btn-md btn-success mb-3">Add Items</a>
+                        <a href="{{ route('items.create') }}" class="btn btn-md btn-success mb-3">Add Items</a> <a href="items_pdf" class="btn btn-md btn-success mb-3">Save as PDF</a>
                         <table class="table table-bordered">
                             <thead>
                               <tr>
@@ -50,7 +50,7 @@
                               @endforelse
                             </tbody>
                           </table>  
-                          {{ $items->links() }}
+                          {{ $items->links('pagination::bootstrap-4') }}
                           <a href="/"><button class="btn btn-md btn-success mb-3" style="background-color:blue">Home</button></a>
                     </div>
                 </div>
